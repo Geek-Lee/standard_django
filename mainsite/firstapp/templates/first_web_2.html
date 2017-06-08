@@ -1,9 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>first web</title>
-        <link rel="stylesheet" href="css/semantic.css"  media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}"  media="screen" title="no title" charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
 
 
@@ -22,7 +23,7 @@
             }
             .ui.vertical.segment.masthead {
                 height: 300px;
-                background-image: url('images/star_banner.jpg');
+                background-image: url({% staic 'images/star_banner.jpg' %});
                 background-size: cover;
                 background-position: 100% 80%;
             }
