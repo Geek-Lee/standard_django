@@ -11,9 +11,15 @@ class Article(models.Model):
     headline = models.CharField(null=True, blank=True, max_length=500)
     content = models.TextField(null=True, blank=True)
     TAG_CHOICES = (
-        ('texh', 'Tech'),
+        ('tech', 'Tech'),
         ('life', 'Life'),
     )#标签
     tag = models.CharField(null=True, blank=True, max_length=5, choices=TAG_CHOICES)#标签字段
     def __str__(self):
         return self.headline
+
+class Comment(models.Model):
+    name = models.CharField(null=True, blank=True, max_length=50)
+    comment = models.TextField()
+    def __str__(self):
+        return self.comment
