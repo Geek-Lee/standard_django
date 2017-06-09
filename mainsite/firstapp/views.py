@@ -4,6 +4,16 @@ from django.template import Context, Template
 
 # Create your views here.
 def index(request):
+    print(request)
+    print('==='*30)
+    print(dir(request))
+    print('==='*30)
+    print(type(request))
+    queryset = request.GET.get('tag')
+    if queryset:
+        article_list = Article.objects.filter(tag=queryset)
+    else:
+        article_list = Article.objects.all()
     context = {}
     article_list = Article.objects.all()
     context['article_list'] = article_list

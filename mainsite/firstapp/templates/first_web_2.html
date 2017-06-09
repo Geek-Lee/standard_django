@@ -83,28 +83,28 @@
         <div class="ui  vertical segment">
             {% for article in article_list %}
                 <div class="ui container vertical segment">
-                <a href="#">
+                    <a href="#">
                     <h1 class="ui header">
                         {{ article.headline }}
                     </h1>
                 </a>
 
-                <i class="icon grey small unhide">10,000</i>
-                <p>
+                    <i class="icon grey small unhide">10,000</i>
+                    <p>
                     {{ article.content|truncatewords:100 }}
                     <a href="#">
                         <i class="angle tiny double grey right icon">READMORE</i>
                     </a>
                 </p>
 
-                <div class="ui mini  tag label">
-                    life
+                    <div class="ui mini  tag label">
+                    {{ article.tag }}
                 </div>
-            </div>
+                </div>
             {% endfor %}
         </div>
 
-        <div class="ui inverted  vertical very padded  segment">
+        <div class="ui inverted vertical very padded  segment">
             GeekLee®
         </div>
     </body>
