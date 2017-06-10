@@ -21,5 +21,7 @@ class Article(models.Model):
 class Comment(models.Model):
     name = models.CharField(null=True, blank=True, max_length=50)
     comment = models.TextField()
+    belong_to = models.ForeignKey(to=Article, related_name='under_comments', null=True, blank=True)
+    # 归属=模型.外键（归属于Article，从外部查询叫under_comments，没有是True，空格是True）【article.unser_comment.all】
     def __str__(self):
         return self.comment

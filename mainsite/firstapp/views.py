@@ -23,14 +23,17 @@ def detail(request, page_num):#新增page_num参数
         if form.is_valid():
             name = form.cleaned_data['name']
             comment = form.cleaned_data['comment']
-            c = Comment(name=name, comment=comment)
+            a = Article.objects.get(id=page_num)
+            # 实例化id=page_num的文章
+            c = Comment(name=name, comment=comment, belong_to=a)
+            # 实例化评论（归属于文章a）
             c.save()
-            return redirect(to='detail')
+            return redirect(to='detail', page_num=page_num)
+            # 重定向到page_num页的文章
     context = {}
-    comment_list = Comment.objects.all()
     article = Article.objects.get(id=page_num)#从数据库中找到id=page_num的文章
     context['article'] = article#装入context上下文中
-    context['comment_list'] = comment_list
     context['form'] = form
-    print(context)
+    #print(context)#{'article': <Article: A Rose For Marly>, 'form': <class 'firstapp.form.CommentForm'>}
+    #print(type(context))#<class 'dict'>
     return render(request, 'article_detail.html', context)

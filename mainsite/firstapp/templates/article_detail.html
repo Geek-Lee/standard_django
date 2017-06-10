@@ -38,7 +38,7 @@
     <div class="ui segment container" style="width:700px;">
         <h3 class="ui header" style="font-family:'Oswald', sans-serif;">Comments</h3>
         <div class="ui comments">
-            {% for comment in comment_list %}
+            {% for comment in article.under_comments.all %}
                 <div class="comment">
                     <div class="avatar">
                         <img src="http://semantic-ui.com/images/avatar/small/matt.jpg" alt="" />
