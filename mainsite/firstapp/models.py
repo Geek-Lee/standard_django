@@ -23,5 +23,7 @@ class Comment(models.Model):
     comment = models.TextField()
     belong_to = models.ForeignKey(to=Article, related_name='under_comments', null=True, blank=True)
     # 归属=模型.外键（归属于Article，从外部查询叫under_comments，没有是True，空格是True）【article.unser_comment.all】
+    best_comment = models.BooleanField(default=False)
+    # 默认都不是最优评论，最优评论需在admin后台中手动选择
     def __str__(self):
         return self.comment

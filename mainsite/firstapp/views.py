@@ -32,8 +32,14 @@ def detail(request, page_num):#新增page_num参数
             # 重定向到page_num页的文章
     context = {}
     article = Article.objects.get(id=page_num)#从数据库中找到id=page_num的文章
+    best_comment = Comment.objects.filter(best_comment=True, belong_to=article)
+    # 在评论中筛选评论属性best_comment为True，从属于article的的评论
+    # best_comment=models.BooleanField(default=True)【勾选为best_comment的评论】<=============等价于============>best_comment=True
     context['article'] = article#装入context上下文中
     context['form'] = form
+    if best_comment:
+        context['best_comment'] = best_comment[0]
+    #如果有best_comment，则挑选第一个best_comment
     #print(context)#{'article': <Article: A Rose For Marly>, 'form': <class 'firstapp.form.CommentForm'>}
     #print(type(context))#<class 'dict'>
     return render(request, 'article_detail.html', context)

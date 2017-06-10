@@ -38,6 +38,26 @@
     <div class="ui segment container" style="width:700px;">
         <h3 class="ui header" style="font-family:'Oswald', sans-serif;">Comments</h3>
         <div class="ui comments">
+            {% if best_comment %}
+                <div class="ui mini red left ribbon label">
+                    <i class="icon fire"></i>
+                    BEST
+                </div>
+                <div class="best comment">
+                    <div class="avatar">
+                        <img src="http://semantic-ui.com/images/avatar/small/matt.jpg " alt="" />
+                    </div>
+                    <div class="content">
+                        <a href="#" class="author">{{ best_comment.name }}</a>
+                        <div class="metadata">
+                            <div class="date">2 days ago</div>
+                        </div>
+                        <p class="text" style="font-family:'Raleway', sans-serif;">
+                            {{ best_comment.comment }}
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
             {% for comment in article.under_comments.all %}
                 <div class="comment">
                     <div class="avatar">
