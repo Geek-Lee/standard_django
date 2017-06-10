@@ -5,6 +5,9 @@
         <meta charset="utf-8">
         <title>first web</title>
         <link rel="stylesheet" href="{% static 'css/semantic.css' %}"  media="screen" title="no title" charset="utf-8">
+        <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script><!--引入jquery文件-->
+        <script src="{% static 'css/semantic.min.js' %}"></script><!--引入semantic.min.js文件-->
+        <script src="{% static 'css/index.js' %}"></script><!--引入自定义的js文件-->
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
 
 
@@ -64,8 +67,8 @@
                     Categories
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a class="item" href="">life</a>
-                        <a class="item" href="">tech</a>
+                        <a class="item" href="?tag=life">life</a>
+                        <a class="item" href="?tag=tech">tech</a>
                     </div>
                 </div>
                 <a class="item">
@@ -83,7 +86,7 @@
         <div class="ui  vertical segment">
             {% for article in article_list %}
                 <div class="ui container vertical segment">
-                    <a href="#">
+                    <a href="{% url 'detail' article.id %}">
                     <h1 class="ui header">
                         {{ article.headline }}
                     </h1>
@@ -91,11 +94,11 @@
 
                     <i class="icon grey small unhide">10,000</i>
                     <p>
-                    {{ article.content|truncatewords:100 }}
-                    <a href="#">
-                        <i class="angle tiny double grey right icon">READMORE</i>
-                    </a>
-                </p>
+                        {{ article.content|truncatewords:100 }}
+                        <a href="{% url 'detail' article.id %}">
+                            <i class="angle tiny double grey right icon">READMORE</i>
+                        </a>
+                    </p>
 
                     <div class="ui mini  tag label">
                         {{ article.tag }}

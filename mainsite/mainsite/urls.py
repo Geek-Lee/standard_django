@@ -20,5 +20,8 @@ from firstapp.views import index, detail
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index', index, name="index"),
-    url(r'^detail', detail, name="detail"),
+    url(r'^detail/(?P<page_num>\d+)$', detail, name="detail"),
+    #url(‘url地址’，函数名，查找方便名)
+    #url(r'^detail/(?P<page_num>\d+)$', detail, name="detail"),
+    #(?P<page_num>\d+)------把d+命名为?P<page_num>【page_num为数据库默认文章id，用()包括】
 ]
