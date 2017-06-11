@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from firstapp.views import index, detail
+from firstapp.views import index, detail, detail_comment
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     #url(‘url地址’，函数名，查找方便名)
     #url(r'^detail/(?P<page_num>\d+)$', detail, name="detail"),
     #(?P<page_num>\d+)------把d+命名为?P<page_num>【page_num为数据库默认文章id，用()包括】
+    url(r'^detail/(?P<page_num>\d+)/comment$', detail_comment, name="comment"),
 ]

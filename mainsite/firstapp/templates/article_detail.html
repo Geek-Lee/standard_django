@@ -76,7 +76,7 @@
             {% endfor %}
         </div>
         <div class="ui divider"></div>
-        <form class="ui error tiny form" method="post">
+        <form class="ui error tiny form" action="{% url 'comment' article.id %}" method="post">
             {% if form.errors %}
                 <div class="ui error message">
                     {{ form.errors }}
